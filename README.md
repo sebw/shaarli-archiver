@@ -14,7 +14,7 @@ This container image combines the power of both!
 - when processed, the description of the bookmark is updated with a link to archive (that can be `file:///home/user/archives` or `https://archive.example.com`)
 - the dedicated and unique tag is deleted
 
-## How a bookmarks looks before processing
+## How a bookmark looks before processing
 
 ![](https://raw.githubusercontent.com/sebw/shaarli-archiver/master/screenshots/before.png)
 

@@ -47,7 +47,7 @@ else:
             params = {
                 "description": bookmark_description + "\n\n[Archived on " + archive_date_readable + "](" + archive_url + '/' + str(bookmark_id) + "_" + archive_date + ".html)",
                 "private": bookmark_private,
-                "tags": bookmark_tags,
+                "tags": bookmark_tags + ['shaarli-archiver'],
                 "title": bookmark_title,
                 "url": bookmark_url
             }
