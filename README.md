@@ -10,8 +10,8 @@ This container image combines the power of both!
 
 - this container will query your Shaarli instance every hour
 - it searchs for bookmarks with a dedicated and unique tag (e.g. `to_archive`)
-- if a bookmark is found with that tag, SingleFile processes the link and save the HTML under `/archives`
-- when processed, the description of the bookmark is updated with a link to the public URL of the archive HTML
+- if a bookmark is found with that tag, SingleFile processes the link and saves the HTML under `/archives`
+- when processed, the description of the bookmark is updated with a link to archive (that can be `file:///home/user/archives` or `https://archive.example.com`)
 - the dedicated and unique tag is deleted
 
 ## How a bookmarks looks before processing
@@ -21,6 +21,8 @@ This container image combines the power of both!
 ## How it looks after processing
 
 ![](https://raw.githubusercontent.com/sebw/shaarli-archiver/master/screenshots/after.png)
+
+The "Archived on..." is clickable and goes to `ARCHIVE_URL`
 
 ## Run the container
 
