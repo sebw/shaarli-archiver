@@ -26,11 +26,11 @@ The "Archived on..." is clickable and goes to `ARCHIVE_URL`
 
 ## Run the container
 
-`SHAARLI_TAG` is the dedicated tag you will use to trigger archiving of the link.
+`SHAARLI_TAG` is the dedicated and unique tag that triggers the archiving.
 
 `SHAARLI_TOKEN` is the token that can be found in your Shaarli under Tools > Configure your Shaarli > REST API secret
 
-`ARCHIVE_URL` is the address where the archives will be available.
+`ARCHIVE_URL` is the address where the archives will be available (e.g. `file:///home/user/archives/` or `https://archive.example.com`)
 
 ```bash
 sudo docker run -d \
