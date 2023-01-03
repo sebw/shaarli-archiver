@@ -12,6 +12,7 @@ This container image combines the power of both!
 - it searchs for bookmarks with a dedicated and unique tag (e.g. `to_archive`)
 - if a bookmark is found with that tag, SingleFile processes the link and saves the HTML under `/archives`
 - when processed, the description of the bookmark is updated with a link to archive (that can be `file:///home/user/archives` or `https://archive.example.com`)
+- an (optional) notification is sent to Pushover (it uses the [apprise](https://github.com/caronc/apprise) library)
 - the dedicated and unique tag is deleted
 
 ## How a bookmark looks before processing
@@ -32,6 +33,10 @@ The "Archived on..." is clickable and goes to `ARCHIVE_URL`
 
 `ARCHIVE_URL` is the address where the archives will be available (e.g. `file:///home/user/archives/` or `https://archive.example.com`)
 
+`PUSHOVER_USER` (optional) is your Pushover user token, if you want to get notified when a link is processed
+
+`PUSHOVER_TOKEN` (optional) is your Pushover application token, if you want to get notified when a link is processed
+
 ```bash
 sudo docker run -d \
     --name=shaarli-archiver \
@@ -39,8 +44,10 @@ sudo docker run -d \
     -e SHAARLI_TOKEN=abcdef \
     -e SHAARLI_TAG=to_archive \
     -e ARCHIVE_URL=https://archive.example.com \
+    -e PUSHOVER_USER=abc \
+    -e PUSHOVER_TOKEN=xyz \
     -v /some/local/folder/archives:/archives \
-    ghcr.io/sebw/shaarli-archiver:0.1
+    ghcr.io/sebw/shaarli-archiver:0.3
 ```
 
 ## Or build the container yourself
@@ -48,7 +55,7 @@ sudo docker run -d \
 ```bash
 git clone https://github.com/sebw/shaarli-archiver
 cd shaarli-archiver
-docker build . -t shaarli-archiver:0.1
+docker build . -t shaarli-archiver:0.3
 ```
 
 ## Troubleshooting

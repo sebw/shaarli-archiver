@@ -5,12 +5,16 @@ import json
 import os
 import sys
 import subprocess
+import apprise
 from datetime import datetime
 
 shaarli_url = os.environ.get('SHAARLI_URL')
 shaarli_token = os.environ.get('SHAARLI_TOKEN')
 shaarli_tag = os.environ.get('SHAARLI_TAG')
 archive_url = os.environ.get('ARCHIVE_URL')
+
+pushover_user = os.environ.get('PUSHOVER_USER')
+pushover_token = os.environ.get('PUSHOVER_TOKEN')
 
 now = datetime.now()
 archive_date = now.strftime("%Y%m%d_%H%M%S")
@@ -54,6 +58,15 @@ else:
 
             print("Updating bookmark with link to archive")
             response.put_link(bookmark_id, params)
+
+            if pushover_user:
+                apobj = apprise.Apprise()
+                apobj.add('pover://' + pushover_user + '@' + pushover_token)
+
+                apobj.notify(
+                    body='URL ' + bookmark_url + ' has been processed',
+                    title='Shaarli Archiver',
+                )
         except:
             sys.exit("Something failed...")
 
