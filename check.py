@@ -49,7 +49,7 @@ else:
 
             # update description with the archive link
             params = {
-                "description": bookmark_description + "\n\n[Archived on " + archive_date_readable + "](" + archive_url + '/' + str(bookmark_id) + "_" + archive_date + ".html)",
+                "description": bookmark_description + "\n\n---\n\n[Archived on " + archive_date_readable + "](" + archive_url + '/' + str(bookmark_id) + "_" + archive_date + ".html)",
                 "private": bookmark_private,
                 "tags": bookmark_tags + ['shaarli-archiver'],
                 "title": bookmark_title,

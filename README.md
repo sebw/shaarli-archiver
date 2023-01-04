@@ -47,7 +47,7 @@ sudo docker run -d \
     -e PUSHOVER_USER=abc \
     -e PUSHOVER_TOKEN=xyz \
     -v /some/local/folder/archives:/archives \
-    ghcr.io/sebw/shaarli-archiver:0.3
+    ghcr.io/sebw/shaarli-archiver:0.4
 ```
 
 ## Or build the container yourself
@@ -55,7 +55,7 @@ sudo docker run -d \
 ```bash
 git clone https://github.com/sebw/shaarli-archiver
 cd shaarli-archiver
-docker build . -t shaarli-archiver:0.3
+docker build . -t shaarli-archiver:0.4
 ```
 
 ## Troubleshooting
