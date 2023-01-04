@@ -2,18 +2,20 @@
 
 [Shaarli](https://github.com/shaarli/Shaarli) doesn't have native local archiving possibilities.
 
-[SingleFile](https://github.com/gildas-lormeau/SingleFile) provides an easy way to archive web pages in a single HTML file.
+[SingleFile](https://github.com/gildas-lormeau/SingleFile) provides an easy way to archive web pages in a single HTML file (embedding pictures!).
 
 This container image combines the power of both!
 
-## How it works
+## How does it work?
 
 - this container will query your Shaarli instance every hour
-- it searchs for bookmarks with a dedicated and unique tag (e.g. `to_archive`)
-- if a bookmark is found with that tag, SingleFile processes the link and saves the HTML under `/archives`
-- when processed, the description of the bookmark is updated with a link to archive (that can be `file:///home/user/archives` or `https://archive.example.com`)
+- it searches your Shaarli for links with a specific tag that you define (e.g. `to_archive`)
+- if bookmarks are found with that tag, SingleFile processes the links and saves the single HTML under `/archives` on the container filesystem (mount the folder!)
+- when processed the bookmark is edited
+  - description is updated with a link to the archive (e.g.: `file:///home/user/archives/1234_20200101_120000.html` or `https://archive.example.com/1234_20200101_120000.html`)
+  - tag `shaarli-archiver` is added, making it easy to find archived bookmarks
 - an (optional) notification is sent to Pushover (it uses the [apprise](https://github.com/caronc/apprise) library)
-- the dedicated and unique tag is deleted
+- when all links are processed, the dedicated and unique tag is deleted
 
 ## How a bookmark looks before processing
 
@@ -23,7 +25,7 @@ This container image combines the power of both!
 
 ![](https://raw.githubusercontent.com/sebw/shaarli-archiver/master/screenshots/after.png)
 
-The "Archived on..." is clickable and goes to `ARCHIVE_URL`
+The "Archived on..." is clickable and goes to `ARCHIVE_URL`/linkID_archivalDate.html
 
 ## Run the container
 
