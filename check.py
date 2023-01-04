@@ -49,7 +49,7 @@ else:
 
             # update description with the archive link
             params = {
-                "description": bookmark_description + "\n\n---\n\n[Archived on " + archive_date_readable + "](" + archive_url + '/' + str(bookmark_id) + "_" + archive_date + ".html)",
+                "description": bookmark_description + "\n\n---\n\n__*[Archived on " + archive_date_readable + "](" + archive_url + '/' + str(bookmark_id) + "_" + archive_date + ".html)*__",
                 "private": bookmark_private,
                 "tags": bookmark_tags + ['shaarli-archiver'],
                 "title": bookmark_title,
@@ -60,6 +60,7 @@ else:
             response.put_link(bookmark_id, params)
 
             if pushover_user:
+                print("Notifying Pushover")
                 apobj = apprise.Apprise()
                 apobj.add('pover://' + pushover_user + '@' + pushover_token)
 
@@ -68,7 +69,7 @@ else:
                     title='Shaarli Archiver',
                 )
         except:
-            sys.exit("Something failed...")
+            sys.exit("Something failed when trying to process the link")
 
     # Delete the tag when all links have been processed
     print("Deleting tag " + shaarli_tag)
