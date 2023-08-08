@@ -80,5 +80,5 @@ docker exec -it shaarli-archiver tail -f /var/log/shaarli-archiver.log
 
 ```bash
 docker exec -it shaarli-archiver sh
-/usr/bin/python3 /usr/src/app/check.py
+/usr/bin/python3 /opt/check.py
 ```
